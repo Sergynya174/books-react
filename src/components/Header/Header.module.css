@@ -1,0 +1,35 @@
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-image: url('../../images/backgraund.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-bottom: 20px;
+
+}
+
+.h1{
+    color: white;
+    margin: 20px 0;
+}
+
+.containerInputs{
+    display: flex;
+}
+
+.containerInput{
+    display: flex;
+    margin-right: 15px;
+}
+
+.containerInput:last-of-type{
+    margin-right: 0;
+}
+
+.text{
+    margin: 0 8px 0 0 
+}
