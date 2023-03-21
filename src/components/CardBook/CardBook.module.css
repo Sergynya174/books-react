@@ -3,14 +3,16 @@
     display: flex;
     width: 250px;
     flex-direction: column;
-    align-items: center;
     padding: 30px 20px 20px;
+    cursor: pointer;
+    margin: 0 auto;
 }
 
 .img{
     width: 150px;
     height: 200px;
     box-shadow: 0 10px 13px -5px #979798;
+    margin: 0 auto;
 }
 
 .categorie{
@@ -21,9 +23,9 @@
 }
 
 .title{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
-    margin-bottom: 7px;
+    margin: 0 0 7px;
 }
 
 .author{
@@ -31,4 +33,9 @@
     font-size: 16px;
     font-weight: 400;
     margin: 0;
+}
+
+.containerInfo{
+    display: flex;
+    flex-direction: column;
 }

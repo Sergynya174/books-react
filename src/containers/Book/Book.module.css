@@ -1,0 +1,52 @@
+.container{
+    display: flex;
+}
+
+.containerImg{
+    background-color: #FAF0E6;
+    width: 45%;
+    display: flex;
+}
+
+.img{
+    max-width: 300px;
+    max-height: 500px;
+    margin: auto;
+    width: 80%;
+}
+
+.containerInfo{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto 10px;
+}
+
+.containerDescription{
+    border: 1px solid #979798;
+    min-height: 100px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.textDescription{
+    margin: 0;
+}
+
+.textCategories{
+    margin: 0;
+    color: #979798;
+}
+
+.title{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.textAuthors{
+    color:#979798;
+    text-decoration: underline;
+    font-size: 14px;
+    margin: 0 0 20px;
+}

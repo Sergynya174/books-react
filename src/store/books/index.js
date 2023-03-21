@@ -4,15 +4,20 @@ import { axiosInstance } from "../../utils/axios";
 const apiKey = process.env.REACT_APP_API_KEY;
 
 export const getBooks = createAsyncThunk("getBooks", async (item) => {
-  console.log(item);
   const { data } = await axiosInstance.get(
-    `/v1/volumes?q=${item.book}&maxResults=30&key=${apiKey}`
+    `v1/volumes?q=${item.book}&orderBy=${item.sorting}&filter=${item.categories}&maxResults=30&key=${apiKey}`
   );
+  return data;
+});
+
+export const getBook = createAsyncThunk("getBook", async (id) => {
+  const { data } = await axiosInstance.get(`v1/volumes/${id}?key=${apiKey}`);
   return data;
 });
 
 const initialState = {
   books: null,
+  book: null,
   loaders: {
     common: false,
   },
@@ -21,11 +26,7 @@ const initialState = {
 const booksSlice = createSlice({
   name: "books",
   initialState,
-  reducers: {
-    selectedBook: (state, { payload }) => {
-      state.selectedBook = payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     //getBooks
     builder.addCase(getBooks.pending, (state) => {
@@ -36,6 +37,18 @@ const booksSlice = createSlice({
       state.loaders.common = false;
     });
     builder.addCase(getBooks.rejected, (state, { error }) => {
+      state.loaders.common = false;
+      console.log(error);
+    });
+    //getBook
+    builder.addCase(getBook.pending, (state) => {
+      state.loaders.common = true;
+    });
+    builder.addCase(getBook.fulfilled, (state, { payload }) => {
+      state.book = payload;
+      state.loaders.common = false;
+    });
+    builder.addCase(getBook.rejected, (state, { error }) => {
       state.loaders.common = false;
       console.log(error);
     });

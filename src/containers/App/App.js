@@ -1,12 +1,12 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Books from "../Books";
+import Book from "../Book";
 
 function App() {
-  const location = useLocation();
-
   return (
-    <Routes location={location} key={location.pathname}>
+    <Routes>
       <Route path="/" element={<Books />} />
+      <Route path="/book/:id" element={<Book />} />
     </Routes>
   );
 }
