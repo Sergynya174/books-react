@@ -1,14 +1,12 @@
 import React from "react";
 import styles from "./Form.module.css";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
-import { getBooksCard } from "../../store/books/selectors";
+import { useDispatch } from "react-redux";
 import { getBooks } from "../../store/books";
 
 const Form = () => {
   const dispatch = useDispatch();
   const { handleSubmit, register } = useForm();
-  const books = useSelector(getBooksCard);
 
   const onSubmit = (data) => {
     (async () => {

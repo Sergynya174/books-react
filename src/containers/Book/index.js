@@ -13,7 +13,7 @@ const Book = () => {
 
   useEffect(() => {
     dispatch(getBook(id));
-  }, [id]);
+  }, [dispatch, id]);
 
   return (
     <>
