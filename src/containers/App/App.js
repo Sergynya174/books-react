@@ -5,8 +5,8 @@ import Book from "../Book";
 function App() {
   return (
     <Routes>
-      <Route path="/books" element={<Books />} />
-      <Route path="/book/:id" element={<Book />} />
+      <Route path="/" element={<Books />} />
+      <Route path="/:id" element={<Book />} />
     </Routes>
   );
 }
