@@ -10,7 +10,7 @@ const CardBook = ({ card }) => {
 
   const handleClick = () => {
     dispatch(getBook(card.id));
-    navigate(`/book/${card.id}`);
+    navigate(`/${card.id}`);
   };
 
   return (

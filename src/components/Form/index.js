@@ -34,11 +34,13 @@ const Form = () => {
             className={styles.select}
             id="categories"
           >
-            <option value="partial">partial</option>
-            <option value="full">full</option>
-            <option value="free-ebooks">free-ebooks</option>
-            <option value="paid-ebooks">paid-ebooks</option>
-            <option value="ebooks">ebooks</option>
+            <option value="all">all</option>
+            <option value="art">art</option>
+            <option value="biography">biography</option>
+            <option value="computers">computers</option>
+            <option value="history">history</option>
+            <option value="medical">medical</option>
+            <option value="poetry">poetry</option>
           </select>
         </div>
         <div className={styles.containerInput}>

@@ -9,7 +9,8 @@
     background-repeat: no-repeat;
     background-position: center;
     padding-bottom: 20px;
-
+    box-sizing: border-box;
+    height: 20vh;
 }
 
 .h1{

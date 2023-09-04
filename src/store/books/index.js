@@ -4,8 +4,10 @@ import { axiosInstance } from "../../utils/axios";
 const apiKey = process.env.REACT_APP_API_KEY;
 
 export const getBooks = createAsyncThunk("getBooks", async (item) => {
+  const subject =
+    item.categories !== "all" ? `subject:${item.categories}` : null;
   const { data } = await axiosInstance.get(
-    `v1/volumes?q=${item.book}&orderBy=${item.sorting}&filter=${item.categories}&maxResults=30&key=${apiKey}`
+    `v1/volumes?q=${subject}+${item.book}&orderBy=${item.sorting}&maxResults=40&key=${apiKey}`
   );
   return data;
 });
@@ -55,6 +57,6 @@ const booksSlice = createSlice({
   },
 });
 
-export const { selectedCard, selectedCardById } = booksSlice.actions;
+export const { setFilters } = booksSlice.actions;
 
 export default booksSlice.reducer;

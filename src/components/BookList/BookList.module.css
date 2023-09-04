@@ -19,3 +19,18 @@
     font-size: 20px;
     font-weight: 500;
 }
+
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.loadMoreBtn{
+    cursor: pointer;
+    width: 200px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #FAF0E6;
+}
