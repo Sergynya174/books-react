@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "./Header.module.css";
+import "./Header.scss";
 import Form from "../../components/Form";
 
 const Header = () => {
   return (
-    <div className={styles.header}>
-      <h1 className={styles.h1}>Search for books</h1>
+    <div className="header">
+      <h1 className="h1">Search for books</h1>
       <Form />
     </div>
   );

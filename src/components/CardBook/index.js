@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import styles from "./CardBook.module.css";
+import "./CardBook.scss";
 import { getBook } from "../../store/books";
 
 const CardBook = ({ card }) => {
@@ -14,16 +14,16 @@ const CardBook = ({ card }) => {
   };
 
   return (
-    <div onClick={handleClick} className={styles.card}>
+    <div onClick={handleClick} className="card">
       <img
-        className={styles.img}
-        src={card?.volumeInfo.imageLinks.thumbnail}
+        className="img"
+        src={card?.volumeInfo.imageLinks?.thumbnail}
         alt="book"
       />
-      <div className={styles.containerInfo}>
-        <p className={styles.categorie}>{card.volumeInfo.categories}</p>
-        <h2 className={styles.title}>{card.volumeInfo.title}</h2>
-        <p className={styles.author}>{card.volumeInfo.authors}</p>
+      <div className="containerInfo">
+        <p className="categorie">{card.volumeInfo.categories}</p>
+        <h2 className="title">{card.volumeInfo.title}</h2>
+        <p className="author">{card.volumeInfo.authors}</p>
       </div>
     </div>
   );

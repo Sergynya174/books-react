@@ -1,0 +1,79 @@
+.bookList-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    
+  .bookList-cardContainer {
+    background-color: white;
+    padding: 20px;
+    display: grid;
+    justify-content: center;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(284px, 1fr));
+    grid-template-rows: auto;
+  }
+
+  .bookList-title {
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .bookList-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .bookList-loadMoreBtn {
+    cursor: pointer;
+    width: 200px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #FAF0E6;
+  }
+    
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+}
+
+.bookList-loadContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+  
+.bookList-loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+.card-animation-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.card-animation-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.card-animation-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-animation-exit-active {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms, transform 500ms;
+}

@@ -1,4 +1,4 @@
-.header{
+.header {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,26 +11,26 @@
     padding-bottom: 20px;
     box-sizing: border-box;
     height: 20vh;
-}
-
-.h1{
-    color: white;
-    margin: 20px 0;
-}
-
-.containerInputs{
-    display: flex;
-}
-
-.containerInput{
-    display: flex;
-    margin-right: 15px;
-}
-
-.containerInput:last-of-type{
-    margin-right: 0;
-}
-
-.text{
-    margin: 0 8px 0 0 
-}
+  
+    .h1 {
+      color: white;
+      margin: 20px 0;
+    }
+  
+    .containerInputs {
+      display: flex;
+  
+      .containerInput {
+        display: flex;
+        margin-right: 15px;
+  
+        &:last-of-type {
+          margin-right: 0;
+        }
+  
+        .text {
+          margin: 0 8px 0 0;
+        }
+      }
+    }
+  }

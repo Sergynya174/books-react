@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/Header";
-import styles from "./Book.module.css";
+import "./Book.scss";
 import { getBookCard } from "../../store/books/selectors";
 import { getBook } from "../../store/books";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,20 +18,20 @@ const Book = () => {
   return (
     <>
       <Header />
-      <div className={styles.container}>
-        <div className={styles.containerImg}>
+      <div className="book-container">
+        <div className="book-containerImg">
           <img
-            className={styles.img}
+            className="book-img"
             src={book?.volumeInfo.imageLinks.thumbnail}
             alt="book"
           />
         </div>
-        <div className={styles.containerInfo}>
-          <p className={styles.textCategories}>{book?.volumeInfo.categories}</p>
-          <h1 className={styles.title}>{book?.volumeInfo.title}</h1>
-          <p className={styles.textAuthors}>{book?.volumeInfo.authors}</p>
-          <div className={styles.containerDescription}>
-            <p className={styles.textDescription}>
+        <div className="book-containerInfo">
+          <p className="book-textCategories">{book?.volumeInfo.categories}</p>
+          <h1 className="book-title">{book?.volumeInfo.title}</h1>
+          <p className="book-textAuthors">{book?.volumeInfo.authors}</p>
+          <div className="book-containerDescription">
+            <p className="book-textDescription">
               {book?.volumeInfo.description}
             </p>
           </div>

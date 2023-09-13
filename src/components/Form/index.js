@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Form.module.css";
+import "./Form.scss";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { getBooks } from "../../store/books";
@@ -17,21 +17,21 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <div className={styles.containerInputs}>
+    <form onSubmit={handleSubmit(onSubmit)} className="form">
+      <div className="form-containerInputs">
         <input
-          className={styles.input}
+          className="form-input"
           {...register("book")}
           placeholder="Введите название книги"
         />
-        <button type="submit" className={styles.button} />
+        <button type="submit" className="form-button" />
       </div>
-      <div className={styles.container}>
-        <div className={styles.containerInput}>
-          <p className={styles.text}>Categories</p>
+      <div className="form-container">
+        <div className="form-containerInput">
+          <p className="form-text">Categories</p>
           <select
             {...register("categories")}
-            className={styles.select}
+            className="form-select"
             id="categories"
           >
             <option value="all">all</option>
@@ -43,13 +43,9 @@ const Form = () => {
             <option value="poetry">poetry</option>
           </select>
         </div>
-        <div className={styles.containerInput}>
-          <p className={styles.text}>Sorting by</p>
-          <select
-            {...register("sorting")}
-            className={styles.select}
-            id="sorting"
-          >
+        <div className="form-containerInput">
+          <p className="form-text">Sorting by</p>
+          <select {...register("sorting")} className="form-select" id="sorting">
             <option value="relevance">relevance</option>
             <option value="newest">newest</option>
           </select>
