@@ -24,4 +24,4 @@
 
 **Запустить проект:**
 
-[Ссылка на проект](https://sergynya174.github.io/books-react/)
+[Ссылка на проект](https://books-react-seven.vercel.app/)
