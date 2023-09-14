@@ -1,2 +1,2 @@
-export const getBooksCard = ({ books }) => books.books?.items;
+export const getBooksCard = ({ books }) => books.books;
 export const getBookCard = ({ books }) => books.book;

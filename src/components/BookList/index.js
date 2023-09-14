@@ -1,29 +1,12 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import CardBook from "../CardBook";
 import { useSelector } from "react-redux";
 import "./BookList.scss";
-import { getBooksCard } from "../../store/books/selectors";
 import { map } from "lodash";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-const BookList = () => {
-  const books = useSelector(getBooksCard);
-  const [displayedBooks, setDisplayedBooks] = useState([]);
-  const [page, setPage] = useState(1);
-  const step = 30;
-
+const BookList = ({ books, displayedBooks, handleLoadMore }) => {
   const loaders = useSelector((state) => state.books.loaders.common);
-
-  const handleLoadMore = () => {
-    setPage(page + 1);
-  };
-
-  useEffect(() => {
-    const end = page * step;
-    const newBooks = books?.slice(0, end);
-    setDisplayedBooks(newBooks);
-  }, [books, page]);
-
   return (
     <div className="bookList-container">
       {loaders ? (
@@ -32,9 +15,9 @@ const BookList = () => {
         </div>
       ) : (
         <>
-          <h2 className="bookList-title">Found {books?.length || 0} result</h2>
+          <h2 className="bookList-title">Found {books?.totalItems} result</h2>
           <TransitionGroup className="bookList-cardContainer">
-            {map(displayedBooks, (item, index) => {
+            {map(books?.items, (item, index) => {
               return (
                 <CSSTransition
                   key={index}
@@ -48,7 +31,7 @@ const BookList = () => {
           </TransitionGroup>
         </>
       )}
-      {books?.length > 30 && displayedBooks?.length < books?.length && (
+      {books?.totalItems > 30 && (
         <div className="bookList-pagination">
           <button onClick={handleLoadMore} className="bookList-loadMoreBtn">
             Load more

@@ -3,11 +3,14 @@ import { axiosInstance } from "../../utils/axios";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
-export const getBooks = createAsyncThunk("getBooks", async (item, start) => {
+export const getBooks = createAsyncThunk("getBooks", async (item) => {
+  const startIndex = item.start;
   const subject =
     item.categories !== "all" ? `subject:${item.categories}` : null;
   const { data } = await axiosInstance.get(
-    `v1/volumes?q=${subject}+${item.book}&orderBy=${item.sorting}&maxResults=40&key=${apiKey}`
+    `v1/volumes?q=${subject}+${item.book}&orderBy=${item.sorting}&startIndex=${
+      startIndex || 0
+    }&maxResults=30&key=${apiKey}`
   );
   return data;
 });
@@ -35,7 +38,14 @@ const booksSlice = createSlice({
       state.loaders.common = true;
     });
     builder.addCase(getBooks.fulfilled, (state, { payload }) => {
-      state.books = payload;
+      if (payload) {
+        if (state.books) {
+          state.books.items = [...state.books.items, ...payload.items];
+          state.books.totalItems = payload.totalItems;
+        } else {
+          state.books = payload;
+        }
+      }
       state.loaders.common = false;
     });
     builder.addCase(getBooks.rejected, (state, { error }) => {
