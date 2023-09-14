@@ -7,12 +7,22 @@ import { getBooks } from "../../store/books";
 const Form = () => {
   const dispatch = useDispatch();
   const { handleSubmit, register } = useForm();
-  const [currentTopic, setCurrentTopic] = useState("react");
+  const [currentTopic, setCurrentTopic] = useState("");
 
   useEffect(() => {
-    dispatch(
-      getBooks({ book: currentTopic, categories: "all", sorting: "relevance" })
-    );
+    if (currentTopic === "") {
+      dispatch(
+        getBooks({ book: "react", categories: "all", sorting: "relevance" })
+      );
+    } else {
+      dispatch(
+        getBooks({
+          book: currentTopic,
+          categories: "all",
+          sorting: "relevance",
+        })
+      );
+    }
   }, [dispatch, currentTopic]);
 
   const onSubmit = (data) => {
