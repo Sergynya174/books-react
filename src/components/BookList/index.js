@@ -26,25 +26,27 @@ const BookList = () => {
 
   return (
     <div className="bookList-container">
-      <h2 className="bookList-title">Found {books?.length} result</h2>
       {loaders ? (
         <div className="bookList-loadContainer">
           <div className="bookList-loader"></div>
         </div>
       ) : (
-        <TransitionGroup className="bookList-cardContainer">
-          {map(displayedBooks, (item, index) => {
-            return (
-              <CSSTransition
-                key={index}
-                timeout={1000}
-                classNames="card-animation"
-              >
-                <CardBook key={index} card={item} />
-              </CSSTransition>
-            );
-          })}
-        </TransitionGroup>
+        <>
+          <h2 className="bookList-title">Found {books?.length || 0} result</h2>
+          <TransitionGroup className="bookList-cardContainer">
+            {map(displayedBooks, (item, index) => {
+              return (
+                <CSSTransition
+                  key={index}
+                  timeout={1000}
+                  classNames="card-animation"
+                >
+                  <CardBook key={index} card={item} />
+                </CSSTransition>
+              );
+            })}
+          </TransitionGroup>
+        </>
       )}
       {books?.length > 30 && displayedBooks?.length < books?.length && (
         <div className="bookList-pagination">

@@ -3,7 +3,7 @@ import { axiosInstance } from "../../utils/axios";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
-export const getBooks = createAsyncThunk("getBooks", async (item) => {
+export const getBooks = createAsyncThunk("getBooks", async (item, start) => {
   const subject =
     item.categories !== "all" ? `subject:${item.categories}` : null;
   const { data } = await axiosInstance.get(

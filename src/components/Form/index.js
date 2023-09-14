@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import "./Form.scss";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,13 @@ import { getBooks } from "../../store/books";
 const Form = () => {
   const dispatch = useDispatch();
   const { handleSubmit, register } = useForm();
+  const [currentTopic, setCurrentTopic] = useState("react");
+
+  useEffect(() => {
+    dispatch(
+      getBooks({ book: currentTopic, categories: "all", sorting: "relevance" })
+    );
+  }, [dispatch, currentTopic]);
 
   const onSubmit = (data) => {
     (async () => {
@@ -16,12 +23,18 @@ const Form = () => {
     })();
   };
 
+  const handleTopicChange = (e) => {
+    setCurrentTopic(e.target.value);
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
       <div className="form-containerInputs">
         <input
           className="form-input"
           {...register("book")}
+          onChange={handleTopicChange}
+          value={currentTopic}
           placeholder="Введите название книги"
         />
         <button type="submit" className="form-button" />
