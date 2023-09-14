@@ -5,7 +5,7 @@ import "./BookList.scss";
 import { map } from "lodash";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-const BookList = ({ books, displayedBooks, handleLoadMore }) => {
+const BookList = ({ books, handleLoadMore }) => {
   const loaders = useSelector((state) => state.books.loaders.common);
   return (
     <div className="bookList-container">
@@ -15,28 +15,41 @@ const BookList = ({ books, displayedBooks, handleLoadMore }) => {
         </div>
       ) : (
         <>
-          <h2 className="bookList-title">Found {books?.totalItems} result</h2>
-          <TransitionGroup className="bookList-cardContainer">
-            {map(books?.items, (item, index) => {
-              return (
-                <CSSTransition
-                  key={index}
-                  timeout={1000}
-                  classNames="card-animation"
-                >
-                  <CardBook key={index} card={item} />
-                </CSSTransition>
-              );
-            })}
-          </TransitionGroup>
+          {books === null ? (
+            <div className="bookList-title">
+              Start looking for books that interest you
+            </div>
+          ) : (
+            <>
+              <h2 className="bookList-title">
+                Found {books?.totalItems} result
+              </h2>
+              <TransitionGroup className="bookList-cardContainer">
+                {map(books?.items, (item, index) => {
+                  return (
+                    <CSSTransition
+                      key={index}
+                      timeout={1000}
+                      classNames="card-animation"
+                    >
+                      <CardBook key={index} card={item} />
+                    </CSSTransition>
+                  );
+                })}
+              </TransitionGroup>
+              {books?.totalItems > 30 && (
+                <div className="bookList-pagination">
+                  <button
+                    onClick={handleLoadMore}
+                    className="bookList-loadMoreBtn"
+                  >
+                    Load more
+                  </button>
+                </div>
+              )}
+            </>
+          )}
         </>
-      )}
-      {books?.totalItems > 30 && (
-        <div className="bookList-pagination">
-          <button onClick={handleLoadMore} className="bookList-loadMoreBtn">
-            Load more
-          </button>
-        </div>
       )}
     </div>
   );

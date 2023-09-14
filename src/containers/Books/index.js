@@ -8,7 +8,6 @@ import { getBooks } from "../../store/books";
 const Books = () => {
   const books = useSelector(getBooksCard);
   const [requestData, setRequestData] = useState({});
-  const [displayedBooks, setDisplayedBooks] = useState([]);
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const maxResults = 30;
@@ -35,12 +34,7 @@ const Books = () => {
   return (
     <>
       <Header onSubmit={onSubmit} />
-      <BookList
-        handleLoadMore={handleLoadMore}
-        books={books}
-        displayedBooks={displayedBooks}
-        setDisplayedBooks={setDisplayedBooks}
-      />
+      <BookList handleLoadMore={handleLoadMore} books={books} />
     </>
   );
 };
